@@ -1,0 +1,8 @@
+body {
+	width: 768px;
+}
+
+#searchBar {
+	width: inherit;
+	font-size: 20px;
+}

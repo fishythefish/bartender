@@ -1,0 +1,48 @@
+{
+	"manifest_version": 2,
+	"name": "bartender",
+	"version": "1.0.0",
+
+	"description": "A fuzzy searching omnibar for Chrome",
+
+	"browser_action": {
+		// "default_icon": {
+		// 	"19": "",
+		// 	"38": ""
+		// },
+		"default_title": "bartender",
+		"default_popup": "popup.html"
+	},
+
+	"author": "Mayank Patke",
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	// "commands": {
+	// 	"openBar": {
+	// 		"suggested_key": {
+	// 			"default": "Ctrl+Shift+P",
+	// 			"mac": "Command+Shift+P"
+	// 		}
+	// 	},
+	// 	"_execute_browser_action": {
+	// 		"suggested_key": {
+	// 			"default": "Ctrl+Shift+P",
+	// 			"mac": "Command+Shift+P"
+	// 		}
+	// 	}
+	// },
+	"incognito": "split",
+	"offline_enabled": true,
+	"options_page": "options.html",
+	"permissions": [
+		"bookmarks",
+		"browsingData",
+		"downloads",
+		"history",
+		"management",
+		"storage",
+		"topSites"
+	]
+}
