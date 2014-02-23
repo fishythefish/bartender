@@ -11,12 +11,12 @@
 		// 	"38": ""
 		// },
 		"default_title": "bartender",
-		"default_popup": "popup.html"
+		"default_popup": "/html/popup.html"
 	},
 
 	"author": "Mayank Patke",
 	"background": {
-		"scripts": ["background.js"],
+		"scripts": ["/js/background.js"],
 		"persistent": false
 	},
 	// "commands": {
@@ -35,7 +35,7 @@
 	// },
 	"incognito": "split",
 	"offline_enabled": true,
-	"options_page": "options.html",
+	"options_page": "/html/options.html",
 	"permissions": [
 		"bookmarks",
 		"browsingData",
@@ -43,6 +43,7 @@
 		"history",
 		"management",
 		"storage",
+		"tabs",
 		"topSites"
 	]
 }
