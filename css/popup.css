@@ -1,0 +1,32 @@
+body {
+	width: 768px;
+	background-color: #333;
+	overflow-x: hidden;
+	-ms-overflow-x: hidden;
+}
+
+#searchbar {
+	border-style: none;
+	padding: 5px;
+	width: 758px;
+	font-size: 20px;
+	background-color: inherit;
+	color: #3CF;
+}
+
+#searchresults {
+	width: inherit;
+	font-size: 20px;
+}
+
+.result {
+	font-family: "Helvetica", sans-serif;
+	border-width: 1px;
+	border-style: none none dotted none;
+	border-color: #3CF;
+	color: #CCC;
+}
+
+.match {
+	color: #3CF;
+}
