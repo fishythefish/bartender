@@ -19,6 +19,7 @@
 		"scripts": ["/js/background.js"],
 		"persistent": false
 	},
+	// Only available in dev
 	// "commands": {
 	// 	"openBar": {
 	// 		"suggested_key": {
@@ -36,13 +37,12 @@
 	"incognito": "split",
 	"offline_enabled": true,
 	"permissions": [
-		"bookmarks",
-		"browsingData",
-		"downloads",
-		"history",
-		"management",
-		"storage",
-		"tabs",
-		"topSites"
+		//"bookmarks",
+		//"browsingData",
+		//"downloads",
+		//"history",
+		//"management",
+		"tabs"
+		//"topSites"
 	]
 }

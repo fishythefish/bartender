@@ -1,4 +1,5 @@
 body {
+	min-height: 45px;
 	width: 768px;
 	background-color: #333;
 	padding: 0;
@@ -6,7 +7,7 @@ body {
 
 #topbar {
 	width: inherit;
-	height: 30px;
+	height: 60px;
 	position: fixed;
 	top: 0;
 	margin: 0;
@@ -27,7 +28,7 @@ body {
 #searchresults {
 	width: inherit;
 	font-size: 20px;
-	margin: 45px 0 0 0;
+	margin: 55px 0 0 0;
 }
 
 .result {
