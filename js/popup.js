@@ -3,42 +3,97 @@ $(document).ready(function()
 	var $searchbar = $("#searchbar");
 	var $searchresults = $("#searchresults");
 
+	// Commented options and (hotkey only) are only possible in dev builds
 	var results = {
 		"New: New tab": "(Ctrl+T)",
 		"New: New window": "(Ctrl+N)",
 		"New: New incognito window": "(Ctrl+Shift+N)",
 		"Open: Open home page": "(Alt+Home)",
-		"Open: Open last tab": "(Ctrl+Shift+T)",
-		"Open: Open recent tab": "",
+		"Open: Open last tab (hotkey only)": "(Ctrl+Shift+T)",
+		//"Open: Open recent tab": "",
 		"Open: Open URL": "",
-		"Close: Close tab": "(Ctrl+W)",
-		"Close: Exit": "(Ctrl+Shift+Q)",
+		"Close: Close current tab": "(Ctrl+W)",
+		"Close: Close open tab": "",
+		"Close: Close window": "(Ctrl+Shift+W)",
+		"Close: Exit (hotkey only)": "(Ctrl+Shift+Q)",
 		"Switch to tab": "",
 		"Reload: Reload page": "(F5)",
 		"Reload: Reload page uncached": "(Ctrl+F5)",
-		"Bookmarks: Show bookmarks bar": "(Ctrl+Shift+B)",
-		"Bookmarks: Bookmark manager": "(Ctrl+Shift+O)",
-		"Bookmarks: Import bookmarks and settings": "",
+		"Bookmarks: Show bookmarks bar (hotkey only)": "(Ctrl+Shift+B)",
+		"Bookmarks: Bookmark manager (hotkey only)": "(Ctrl+Shift+O)",
+		//"Bookmarks: Import bookmarks and settings": "",
 		"Bookmarks: Bookmark this page": "(Ctrl+D)",
 		"Bookmarks: Bookmark open pages": "(Ctrl+Shift+D)",
 		"Bookmarks: Unbookmark this page": "",
-		"File: Save": "(Ctrl+S)",
-		"File: Open": "(Ctrl+O)",
-		"File: Find": "(Ctrl+F)",
+		"File: Save (hotkey only)": "(Ctrl+S)",
+		"File: Open (hotkey only)": "(Ctrl+O)",
+		"File: Find (hotkey only)": "(Ctrl+F)",
 		"File: Print": "(Ctrl+P)",
-		"Tools: Extensions": "",
-		"Tools: Task manager": "(Shift+Esc)",
+		"Tools: Task manager (hotkey only)": "(Shift+Esc)",
 		"Tools: Clear browsing data": "(Ctrl+Shift+Del)",
-		"Tools: Report an issue": "(Alt+Shift+I)",
+		"Tools: Report an issue (hotkey only)": "(Alt+Shift+I)",
 		"Tools: View source": "(Ctrl+U)",
-		"Tools: Developer tools": "(Ctrl+Shift+I)",
-		"Tools: JavaScript console": "(Ctrl+Shift+J)",
-		"Tools: Inspect devices": "",
-		"Tools: History": "(Ctrl+H)",
-		"Tools: Downloads": "(Ctrl+J)",
-		"Tools: Settings": "",
-		"Tools: About Google Chrome": "",
-		"Tools: Help": ""
+		"Tools: Developer tools (hotkey only)": "(Ctrl+Shift+I)",
+		"Tools: JavaScript console (hotkey only)": "(Ctrl+Shift+J)",
+		"Chrome: Chrome URLs": "",
+		"Chrome: Accessibility": "",
+		"Chrome: App cache internals": "",
+		"Chrome: Apps": "",
+		"Chrome: Blob internals": "",
+		"Chrome: Bookmarks": "",
+		"Chrome: Cache": "",
+		"Chrome: About": "",
+		"Chrome: Components": "",
+		"Chrome: Conflicts": "",
+		"Chrome: Crashes": "",
+		"Chrome: Credits": "",
+		"Chrome: Devices": "",
+		"Chrome: DNS": "",
+		"Chrome: Downloads": "(Ctrl+J)",
+		"Chrome: Extensions": "",
+		"Chrome: Flags": "",
+		"Chrome: Flash": "",
+		"Chrome: GPU": "",
+		"Chrome: Help": "",
+		"Chrome: Histrograms": "",
+		"Chrome: History": "(Ctrl+H)",
+		"Chrome: IndexedDB internals": "",
+		"Chrome: Inspect": "",
+		"Chrome: IPC": "",
+		"Chrome: Media internals": "",
+		"Chrome: Memory": "",
+		"Chrome: Memory internals": "",
+		"Chrome: NaCl": "",
+		"Chrome: Net internals": "",
+		"Chrome: Omnibox": "",
+		"Chrome: Plugins": "",
+		"Chrome: Policy": "",
+		"Chrome: Predictors": "",
+		"Chrome: Print": "",
+		"Chrome: Profiler": "",
+		"Chrome: Quota internals": "",
+		"Chrome: Settings": "",
+		"Chrome: Sign in internals": "",
+		"Chrome: Stats": "",
+		"Chrome: Sync internals": "",
+		"Chrome: Terms": "",
+		"Chrome: Tracing": "",
+		"Chrome: Translate internals": "",
+		"Chrome: User actions": "",
+		"Chrome: Version": "",
+		"Chrome: View HTTP cache": "",
+		"Chrome: WebRTC internals": "",
+		"Chrome: WebRTC logs": "",
+		"Debugging: Crash": "",
+		"Debugging: Kill": "",
+		"Debugging: Hang": "",
+		"Debugging: Short hang": "",
+		"Debugging: GPU clean": "",
+		"Debugging: GPU crash": "",
+		"Debugging: GPU hang": "",
+		"Debugging: PPAPI flash crash": "",
+		"Debugging: PPAPI flash hang": "",
+		"Debugging: Restart": ""
 	};
 
 	addresults(results);
@@ -51,7 +106,12 @@ $(document).ready(function()
 		switch (e.keyCode)
 		{
 			case 13:
-				
+				var message = $searchresults.children(":nth-child(" + selected + ")").attr("data-content");
+				chrome.runtime.sendMessage(message, function()
+				{
+					window.close();
+				});
+				return;
 			case 38:
 				--selected;
 				break;
@@ -107,7 +167,7 @@ $(document).ready(function()
 				{
 					divcontents += "<p class='alignright'>" + results[result] + "</p>";
 				}
-				$searchresults.append("<div class='result'>" + divcontents + "</div>");
+				$searchresults.append("<div class='result' data-content='" + result + "'>" + divcontents + "</div>");
 			}
 		}
 
@@ -133,7 +193,7 @@ $(document).ready(function()
 			{
 				divcontents += "<p class='alignright'>" + results[result] + "</p>";
 			}
-			$searchresults.append("<div class='result'>" + divcontents + "</div>");
+			$searchresults.append("<div class='result' data-content='" + result + "'>" + divcontents + "</div>");
 		}
 
 		if ($searchresults.is(":empty"))
