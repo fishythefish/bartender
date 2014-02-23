@@ -1,8 +1,16 @@
 body {
 	width: 768px;
 	background-color: #333;
-	overflow-x: hidden;
-	-ms-overflow-x: hidden;
+	padding: 0;
+}
+
+#topbar {
+	width: inherit;
+	height: 30px;
+	position: fixed;
+	top: 0;
+	margin: 0;
+	background-color: inherit;
 }
 
 #searchbar {
@@ -12,21 +20,45 @@ body {
 	font-size: 20px;
 	background-color: inherit;
 	color: #3CF;
+	position: fixed;
+	top: 10px;
 }
 
 #searchresults {
 	width: inherit;
 	font-size: 20px;
+	margin: 45px 0 0 0;
 }
 
 .result {
+	background-color: inherit;
 	font-family: "Helvetica", sans-serif;
 	border-width: 1px;
 	border-style: none none dotted none;
 	border-color: #3CF;
 	color: #CCC;
+	clear: both;
 }
 
 .match {
 	color: #3CF;
+}
+
+.result p {
+	background-color: inherit;
+}
+
+.alignleft {
+	margin: 5px;
+	float: left;
+}
+
+.alignright {
+	margin: 5px;
+	float: right;
+	color: #999;
+}
+
+.highlight {
+	color: #FFF;
 }

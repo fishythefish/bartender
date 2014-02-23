@@ -35,7 +35,6 @@
 	// },
 	"incognito": "split",
 	"offline_enabled": true,
-	"options_page": "/html/options.html",
 	"permissions": [
 		"bookmarks",
 		"browsingData",
